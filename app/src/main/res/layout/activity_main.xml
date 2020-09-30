@@ -5,15 +5,21 @@
     android:layout_height="match_parent"
     tools:context=".ui.mainview.MainActivity">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/film_container"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/cl_root_view"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:scrollbars="vertical" />
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:foregroundGravity="left"
+        android:gravity="start"
+       >
+
+        <include
+
+            layout="@layout/app_bar_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 
 </FrameLayout>
