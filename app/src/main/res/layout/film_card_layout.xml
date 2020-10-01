@@ -22,6 +22,7 @@
             android:weightSum="3">
 <LinearLayout
     android:layout_weight="2"
+    android:layout_marginRight="10dp"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -116,20 +117,19 @@
             android:text="@string/rating"
             android:textAppearance="?android:attr/subtitle"
             android:textSize="16sp" />
-        <TextView
-            android:id="@+id/txtRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:paddingLeft="5dp"
+        <RatingBar
+            android:id="@+id/ratingBar"
             android:paddingTop="5dp"
-            android:paddingRight="5dp"
-            android:paddingBottom="5dp"
-            android:text="5.0"
-            android:textAppearance="?android:attr/subtitle"
-            android:textSize="16sp" />
-
+            android:numStars="5"
+            android:stepSize="1"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:rating="5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             />
     </LinearLayout>
+
+
 </LinearLayout>
 
             <ImageView

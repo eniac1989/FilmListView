@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.farazandishehafagh.filmlistwithkotlin.R
@@ -40,12 +41,13 @@ class FilmListAdapter(private val myDataset: ArrayList<Movie>) :
             val imgFilm = itemView.findViewById(R.id.imgfilm) as ImageView
             val txtDirector = itemView.findViewById(R.id.txtFilmDirector) as TextView
             val txtYear = itemView.findViewById(R.id.txtYear) as TextView
-            val txtRating = itemView.findViewById(R.id.txtRating) as TextView
+
+            val ratingBar = itemView.findViewById(R.id.ratingBar) as RatingBar
 
             txtFilmTitle.text = movie.title
             txtDirector.text = movie.director
             txtYear.text = movie.year.toString()
-            txtRating.text = movie.rating.toString()
+            ratingBar.numStars = movie.rating
 
             imgFilm.setImageResource(movie.image)
         }

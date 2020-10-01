@@ -14,8 +14,7 @@ import kotlinx.android.synthetic.main.fragment_film_list.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+
 
 /**
  * A simple [Fragment] subclass.
@@ -47,9 +46,7 @@ class FilmListFragment : Fragment() {
         @JvmStatic
         fun newInstance() =
             FilmListFragment().apply {
-                arguments = Bundle().apply {
 
-                }
             }
     }
 
@@ -61,7 +58,6 @@ class FilmListFragment : Fragment() {
     fun setUp() {
 
         film_container.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-
         val adapter = FilmListAdapter(Movie.populateList())
         film_container.adapter = adapter
 
