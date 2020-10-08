@@ -28,13 +28,14 @@ class FilmListFragment : Fragment() {
         Toast.makeText(context, "title", Toast.LENGTH_LONG).show()
     }
 
-    val lambdaOnClickListener: (View) -> Unit = {
-        Toast.makeText(context, "title", Toast.LENGTH_LONG).show()
+    val lambdaOnClickListener: (View,String) -> Unit = { x,y ->
+
+            Toast.makeText(context, y, Toast.LENGTH_LONG).show()
     }
 
-    fun cardOnClickListener(x: View, op: (View) -> Unit): Unit {
-        if (x.isClickable)
-            op(x)
+    fun cardOnClickListener(x: View,title:String, op: (View,String) -> Unit): Unit {
+
+            op(x,title)
     }
 
     override fun onCreateView(
