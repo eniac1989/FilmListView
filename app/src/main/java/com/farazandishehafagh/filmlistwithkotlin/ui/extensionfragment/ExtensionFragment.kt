@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import com.farazandishehafagh.filmlistwithkotlin.BaseApplication
 import com.farazandishehafagh.filmlistwithkotlin.R
 import com.farazandishehafagh.filmlistwithkotlin.utils.Utils
 import kotlinx.android.synthetic.main.fragment_extension.*
@@ -45,6 +44,7 @@ class ExtensionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        val txtName = findViewById<EditText>(R.id.btnFormatAmount)
         btnFormatAmount.setOnClickListener {
             val amount = txtAmount.text.toString().toLong()
             val formatAmount = amount.formatAmount()
