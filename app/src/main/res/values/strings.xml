@@ -4,8 +4,30 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="director">Director:</string>
+    <string name="mr">Mr.</string>
     <string name="year">Year:</string>
     <string name="rating">Rating:</string>
     <string name="filmList">Film List</string>
     <string name="parasite">parasite</string>
+
+    <string name="navigation_drawer_open">منو را باز کنید</string>
+    <string name="navigation_drawer_close">منو را ببندید</string>
+
+    <string name="menu_settings">تنظیمات</string>
+
+    <string name="menu_about">درباره ما</string>
+
+
+    <string name="home">صفحه اصلی</string>
+    <string name="go_to_lambda_samples">Go To Extension Samples</string>
+    <string name="film_list_view">Film List View</string>
+    <string name="amount">amount</string>
+    <string name="format_amount">Format Amount</string>
+    <string name="date">date</string>
+    <string name="format_date">Format Date</string>
+    <string name="set_style">Set Style</string>
+    <string name="email_address">Email Address</string>
+    <string name="validate_phone_number">Validate phone Number!</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="check_connectivity">Check Connectivity</string>
 </resources>

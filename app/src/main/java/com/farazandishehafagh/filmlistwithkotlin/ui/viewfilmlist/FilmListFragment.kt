@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +24,18 @@ import kotlinx.android.synthetic.main.fragment_film_list.*
  */
 class FilmListFragment : Fragment() {
 
+    val lambdaOnClickListener1: (View.OnClickListener) -> Unit = {
+        Toast.makeText(context, "title", Toast.LENGTH_LONG).show()
+    }
+
+    val lambdaOnClickListener: (View) -> Unit = {
+        Toast.makeText(context, "title", Toast.LENGTH_LONG).show()
+    }
+
+    fun cardOnClickListener(x: View, op: (View) -> Unit): Unit {
+        if (x.isClickable)
+            op(x)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,8 +71,10 @@ class FilmListFragment : Fragment() {
     fun setUp() {
 
         film_container.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        val adapter = FilmListAdapter(Movie.populateList())
+        val adapter = FilmListAdapter(Movie.populateList(), this)
         film_container.adapter = adapter
 
     }
+
+
 }

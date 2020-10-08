@@ -3,7 +3,6 @@ package com.farazandishehafagh.filmlistwithkotlin.ui.mainview
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.farazandishehafagh.filmlistwithkotlin.R
-import com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist.FilmListFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +14,7 @@ class MainActivity : AppCompatActivity() {
             .beginTransaction()
             .addToBackStack(null)
             .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
-            .replace(R.id.fragment_container, FilmListFragment.newInstance())
+            .replace(R.id.fragment_container, MainFragment.newInstance())
             .commit()
 
 
