@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.farazandishehafagh.filmlistwithkotlin.R
-import com.farazandishehafagh.filmlistwithkotlin.data.Movie
 import kotlinx.android.synthetic.main.fragment_film_list.*
+import org.koin.android.ext.android.inject
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,18 +24,20 @@ import kotlinx.android.synthetic.main.fragment_film_list.*
  */
 class FilmListFragment : Fragment() {
 
+    val adapter: FilmListAdapter by inject()
+
     val lambdaOnClickListener1: (View.OnClickListener) -> Unit = {
         Toast.makeText(context, "title", Toast.LENGTH_LONG).show()
     }
 
-    val lambdaOnClickListener: (View,String) -> Unit = { x,y ->
+    val lambdaOnClickListener: (View, String) -> Unit = { x, y ->
 
-            Toast.makeText(context, y, Toast.LENGTH_LONG).show()
+        Toast.makeText(context, y, Toast.LENGTH_LONG).show()
     }
 
-    fun cardOnClickListener(x: View,title:String, op: (View,String) -> Unit): Unit {
+    fun cardOnClickListener(x: View, title: String, op: (View, String) -> Unit): Unit {
 
-            op(x,title)
+        op(x, title)
     }
 
     override fun onCreateView(
@@ -72,7 +74,8 @@ class FilmListFragment : Fragment() {
     fun setUp() {
 
         film_container.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        val adapter = FilmListAdapter(Movie.populateList(), this)
+//        val adapter = FilmListAdapter(Movie.populateList(), this)
+
         film_container.adapter = adapter
 
     }

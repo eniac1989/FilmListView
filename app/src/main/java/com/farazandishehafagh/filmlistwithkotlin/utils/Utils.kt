@@ -1,6 +1,7 @@
 package com.farazandishehafagh.filmlistwithkotlin.utils
 
-import com.farazandishehafagh.filmlistwithkotlin.BaseApplication
+
+import com.farazandishehafagh.filmlistwithkotlin.KotlinBaseApplication
 
 /**
  * @author Paniz 99.07.16
@@ -9,7 +10,7 @@ class Utils {
 
     companion object {
         val lambdaTranslation: (Int) -> String = { x ->
-            BaseApplication.getResource().getString(x)
+            KotlinBaseApplication.getKotlinResource().getString(x)
         }
 
         fun getTranslationOfString(x: Int, op: (Int) -> String): String {
@@ -17,7 +18,7 @@ class Utils {
         }
 
         val lambdaColor: (Int) -> Int = { x ->
-            BaseApplication.getResource().getColor(x)
+            KotlinBaseApplication.getKotlinResource().getColor(x)
 
         }
 
