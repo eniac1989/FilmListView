@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.res.Resources
 import com.farazandishehafagh.filmlistwithkotlin.di.classModule
+import com.farazandishehafagh.filmlistwithkotlin.di.movieListModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -39,7 +40,7 @@ class KotlinBaseApplication : Application() {
 
         startKoin{
             androidContext(this@KotlinBaseApplication)
-            modules(classModule)
+            modules(classModule,movieListModule)
         }
 
     }

@@ -1,4 +1,4 @@
-package com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist
+package com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist.view
 
 
 import android.os.Bundle
@@ -7,11 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.farazandishehafagh.filmlistwithkotlin.R
+import com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist.adapter.FilmListAdapter
+import com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist.viewmodel.FilmListViewModel
 import kotlinx.android.synthetic.main.fragment_film_list.*
 import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,6 +29,7 @@ import org.koin.android.ext.android.inject
 class FilmListFragment : Fragment() {
 
     val adapter: FilmListAdapter by inject()
+    private val movieViewModel: FilmListViewModel by viewModel()
 
     val lambdaOnClickListener1: (View.OnClickListener) -> Unit = {
         Toast.makeText(context, "title", Toast.LENGTH_LONG).show()
@@ -69,9 +74,16 @@ class FilmListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUp()
+        movieViewModel.movieLiveData.observe(viewLifecycleOwner, Observer {
+
+            adapter.setDataset(it)
+        })
+        if (savedInstanceState == null)
+            movieViewModel.getMovie()
     }
 
     fun setUp() {
+
 
         film_container.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 //        val adapter = FilmListAdapter(Movie.populateList(), this)

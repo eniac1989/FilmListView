@@ -1,4 +1,4 @@
-package com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist
+package com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.farazandishehafagh.filmlistwithkotlin.R
 import com.farazandishehafagh.filmlistwithkotlin.data.Movie
+import com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist.view.FilmListFragment
 import com.farazandishehafagh.filmlistwithkotlin.utils.Utils
 import com.farazandishehafagh.filmlistwithkotlin.utils.Utils.Companion.formatDate
 import com.farazandishehafagh.filmlistwithkotlin.utils.Utils.Companion.getColor
@@ -21,13 +22,24 @@ import com.farazandishehafagh.filmlistwithkotlin.utils.Utils.Companion.lambdaTra
  */
 
 
-class FilmListAdapter(private val myDataset: ArrayList<Movie>,private val fragment: FilmListFragment) :
+class FilmListAdapter(
+    private var myDataset: ArrayList<Movie>,
+    private val fragment: FilmListFragment
+) :
     RecyclerView.Adapter<FilmListAdapter.MovieViewHolder>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.film_card_layout, parent, false)
-        return MovieViewHolder(view)
+        return MovieViewHolder(
+            view
+        )
+    }
+
+    fun setDataset(myDataset: ArrayList<Movie>) {
+        this.myDataset=myDataset
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
@@ -35,13 +47,13 @@ class FilmListAdapter(private val myDataset: ArrayList<Movie>,private val fragme
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bindItems(myDataset[position],fragment)
-      }
+        holder.bindItems(myDataset[position], fragment)
+    }
 
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindItems(movie: Movie,fragment: FilmListFragment) {
+        fun bindItems(movie: Movie, fragment: FilmListFragment) {
 
             val txtFilmTitle = itemView.findViewById(R.id.txtFilmTitle) as TextView
             val imgFilm = itemView.findViewById(R.id.imgfilm) as ImageView
@@ -54,8 +66,8 @@ class FilmListAdapter(private val myDataset: ArrayList<Movie>,private val fragme
             val translationOfString = getTranslationOfString(R.string.mr, lambdaTranslation)
             val color = getColor(R.color.cyan_light, Utils.lambdaColor)
 
-            itemView.setOnClickListener{
-                fragment.cardOnClickListener(itemView,movie.title,fragment.lambdaOnClickListener)
+            itemView.setOnClickListener {
+                fragment.cardOnClickListener(itemView, movie.title, fragment.lambdaOnClickListener)
             }
 
 //            itemView.onLambdaCall(fragment,movie.title)
@@ -69,8 +81,8 @@ class FilmListAdapter(private val myDataset: ArrayList<Movie>,private val fragme
             imgFilm.setImageResource(movie.image)
         }
 
-        fun View.onLambdaCall(fragment:FilmListFragment,title:String):Unit{
-            fragment.cardOnClickListener(itemView,title,fragment.lambdaOnClickListener)
+        fun View.onLambdaCall(fragment: FilmListFragment, title: String): Unit {
+            fragment.cardOnClickListener(itemView, title, fragment.lambdaOnClickListener)
         }
 
     }

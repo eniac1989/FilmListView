@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.farazandishehafagh.filmlistwithkotlin.R
 import com.farazandishehafagh.filmlistwithkotlin.ui.extensionfragment.ExtensionFragment
-import com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist.FilmListFragment
+import com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist.view.FilmListFragment
 import kotlinx.android.synthetic.main.fragment_main.*
 
 
