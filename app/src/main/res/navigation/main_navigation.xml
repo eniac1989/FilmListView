@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/mainFragment"
+    android:id="@+id/main_navigation">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.farazandishehafagh.filmlistwithkotlin.ui.mainview.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_filmListFragment"
+            app:destination="@id/filmListFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_extensionFragment"
+            app:destination="@id/extensionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filmListFragment"
+        android:name="com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist.view.FilmListFragment"
+        android:label="fragment_film_list"
+        tools:layout="@layout/fragment_film_list" />
+    <fragment
+        android:id="@+id/extensionFragment"
+        android:name="com.farazandishehafagh.filmlistwithkotlin.ui.extensionfragment.ExtensionFragment"
+        tools:layout="@layout/fragment_extension"
+        android:label="ExtensionFragment" />
+</navigation>
