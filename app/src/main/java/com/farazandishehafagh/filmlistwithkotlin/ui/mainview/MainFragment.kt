@@ -28,7 +28,8 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btnFilmListView.setOnClickListener {
-            val direction = MainFragmentDirections.actionMainFragmentToFilmListFragment();
+            val direction =
+                MainFragmentDirections.actionMainFragmentToFilmListFragment();
             findNavController().navigate(direction)
         }
 

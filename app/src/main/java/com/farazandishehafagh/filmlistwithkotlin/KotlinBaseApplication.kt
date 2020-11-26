@@ -3,8 +3,7 @@ package com.farazandishehafagh.filmlistwithkotlin
 import android.app.Application
 import android.content.Context
 import android.content.res.Resources
-import com.farazandishehafagh.filmlistwithkotlin.di.classModule
-import com.farazandishehafagh.filmlistwithkotlin.di.movieListModule
+import com.farazandishehafagh.filmlistwithkotlin.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -38,15 +37,12 @@ class KotlinBaseApplication : Application() {
 
         kotlinBaseApplication = this
 
-        startKoin{
+        startKoin {
             androidContext(this@KotlinBaseApplication)
-            modules(classModule,movieListModule)
+            modules(listOf(classModule, movieListModule,networkModule, dataModule,movieDetailViewModel,repositoryModule))
         }
 
     }
-
-
-
 
 
 }

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_light"
+    android:orientation="vertical"
+    tools:context=".ui.filmDetail.view.MovieDetailFragment">
+
+
+    <ImageView
+        android:id="@+id/imgfilmDetail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="end"
+        android:contentDescription="@string/film_view"
+        android:fadingEdge="horizontal"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/film" />
+
+    <TextView
+        android:id="@+id/lblMovieTitle"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgfilmDetail"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="@string/title"
+        android:textColor="@color/black_effective"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/txtMovieTitle"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblMovieTitle"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:textColor="@color/black_effective"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/lblMovieGenre"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtMovieTitle"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="@string/genre"
+        android:textColor="@color/black_effective"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/txtMovieGenre"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblMovieGenre"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black_effective"
+        android:textSize="35sp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        app:backgroundTint="@color/colorAccent"
+        app:srcCompat="@drawable/ic_add_white_24dp" />
+</RelativeLayout>

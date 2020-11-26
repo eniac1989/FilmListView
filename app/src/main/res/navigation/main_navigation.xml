@@ -2,14 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/mainFragment"
-    android:id="@+id/main_navigation">
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/filmListFragment">
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.farazandishehafagh.filmlistwithkotlin.ui.mainview.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_filmListFragment"
             app:destination="@id/filmListFragment" />
@@ -21,10 +21,38 @@
         android:id="@+id/filmListFragment"
         android:name="com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist.view.FilmListFragment"
         android:label="fragment_film_list"
-        tools:layout="@layout/fragment_film_list" />
+        tools:layout="@layout/fragment_film_list">
+        <action
+            android:id="@+id/action_filmListFragment_to_detailFragment"
+            app:destination="@id/detailMovieFragment" />
+
+
+    </fragment>
     <fragment
         android:id="@+id/extensionFragment"
         android:name="com.farazandishehafagh.filmlistwithkotlin.ui.extensionfragment.ExtensionFragment"
-        tools:layout="@layout/fragment_extension"
-        android:label="ExtensionFragment" />
+        android:label="ExtensionFragment"
+        tools:layout="@layout/fragment_extension" />
+    <fragment
+        android:id="@+id/detailMovieFragment"
+        android:name="com.farazandishehafagh.filmlistwithkotlin.ui.filmDetail.view.MovieDetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_movie_detail">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="poster"
+            app:argType="string" />
+        <argument
+            android:name="genre"
+            app:argType="string" />
+        <argument
+            android:defaultValue="0"
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="image"
+            app:argType="string" />
+    </fragment>
 </navigation>

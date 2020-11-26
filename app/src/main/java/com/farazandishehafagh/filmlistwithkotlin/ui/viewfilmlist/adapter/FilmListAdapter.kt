@@ -1,32 +1,28 @@
 package com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RatingBar
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.farazandishehafagh.filmlistwithkotlin.R
-import com.farazandishehafagh.filmlistwithkotlin.data.Movie
+import com.farazandishehafagh.filmlistwithkotlin.data.api.Datum
 import com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist.view.FilmListFragment
 import com.farazandishehafagh.filmlistwithkotlin.utils.Utils
-import com.farazandishehafagh.filmlistwithkotlin.utils.Utils.Companion.formatDate
 import com.farazandishehafagh.filmlistwithkotlin.utils.Utils.Companion.getColor
-import com.farazandishehafagh.filmlistwithkotlin.utils.Utils.Companion.getTranslationOfString
-import com.farazandishehafagh.filmlistwithkotlin.utils.Utils.Companion.lambdaFormatDate
-import com.farazandishehafagh.filmlistwithkotlin.utils.Utils.Companion.lambdaTranslation
+import com.squareup.picasso.Picasso
 
 /**
  * @author Paniz Alipour 99.07.06
  */
 
 
-class FilmListAdapter(
-    private var myDataset: ArrayList<Movie>,
-    private val fragment: FilmListFragment
-) :
-    RecyclerView.Adapter<FilmListAdapter.MovieViewHolder>() {
+class FilmListAdapter(private val context: Context, private val fragment: FilmListFragment) :
+    ListAdapter<Datum, FilmListAdapter.MovieViewHolder>(MovieDiffUtils()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -37,55 +33,39 @@ class FilmListAdapter(
         )
     }
 
-    fun setDataset(myDataset: ArrayList<Movie>) {
-        this.myDataset=myDataset
-        notifyDataSetChanged()
-    }
-
-    override fun getItemCount(): Int {
-        return myDataset.size
-    }
-
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bindItems(myDataset[position], fragment)
+        holder.bindItems(getItem(position), fragment)
     }
 
 
-    class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindItems(movie: Movie, fragment: FilmListFragment) {
+        fun bindItems(movie: Datum, fragment: FilmListFragment) {
 
             val txtFilmTitle = itemView.findViewById(R.id.txtFilmTitle) as TextView
             val imgFilm = itemView.findViewById(R.id.imgfilm) as ImageView
-            val txtDirector = itemView.findViewById(R.id.txtFilmDirector) as TextView
-            val txtYear = itemView.findViewById(R.id.txtYear) as TextView
-
-            val ratingBar = itemView.findViewById(R.id.ratingBar) as RatingBar
-
-
-            val translationOfString = getTranslationOfString(R.string.mr, lambdaTranslation)
             val color = getColor(R.color.cyan_light, Utils.lambdaColor)
-
+            val txtFilmGenre = itemView.findViewById(R.id.txtFilmGenre) as TextView
             itemView.setOnClickListener {
-                fragment.cardOnClickListener(itemView, movie.title, fragment.lambdaOnClickListener)
-            }
 
-//            itemView.onLambdaCall(fragment,movie.title)
+                fragment.cardOnClickListener(itemView, movie, fragment.lambdaOnClickListener)
+            }
 
             txtFilmTitle.setBackgroundColor(color)
             txtFilmTitle.text = movie.title
-            txtDirector.text = translationOfString + " " + movie.director
-            txtYear.text = formatDate(movie.year, lambdaFormatDate)
-            ratingBar.numStars = movie.rating
-
-            imgFilm.setImageResource(movie.image)
+            txtFilmGenre.text=movie.genres.get(0)
+            Picasso.with(itemView.context)?.load(movie.poster)?.into(imgFilm)
         }
+    }
+}
 
-        fun View.onLambdaCall(fragment: FilmListFragment, title: String): Unit {
-            fragment.cardOnClickListener(itemView, title, fragment.lambdaOnClickListener)
-        }
-
+class MovieDiffUtils : DiffUtil.ItemCallback<Datum>() {
+    override fun areItemsTheSame(oldItem: Datum, newItem: Datum): Boolean {
+        return oldItem.title == newItem.title && oldItem.genres.get(0) == newItem.genres.get(0)
     }
 
+    override fun areContentsTheSame(oldItem: Datum, newItem: Datum): Boolean {
+        return oldItem.title == newItem.title && oldItem.genres.get(0) == newItem.genres.get(0)
+    }
 
 }
