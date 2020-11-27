@@ -22,54 +22,168 @@
         android:src="@drawable/film" />
 
     <TextView
-        android:id="@+id/lblMovieTitle"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentLeft="true"
+        android:id="@+id/txtMovieTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/imgfilmDetail"
-        android:layout_marginTop="40dp"
-        android:gravity="center"
-        android:text="@string/title"
-        android:textColor="@color/black_effective"
-        android:textSize="40sp" />
-
-    <TextView
-        android:id="@+id/txtMovieTitle"
-        android:layout_alignParentRight="true"
         android:layout_alignParentLeft="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/lblMovieTitle"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="40dp"
         android:gravity="center"
+        android:textAppearance="?android:attr/title"
         android:textColor="@color/black_effective"
-        android:textSize="40sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/lblMovieGenre"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentLeft="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtMovieTitle"
-        android:layout_marginTop="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/genre"
+        android:textAppearance="?android:attr/subtitle"
         android:textColor="@color/black_effective"
-        android:textSize="35sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/txtMovieGenre"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/lblMovieGenre"
-        android:layout_marginTop="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
+        android:textAppearance="?android:attr/subtitle"
         android:textColor="@color/black_effective"
-        android:textSize="35sp" />
+        android:textSize="20sp" />
+
+    <ImageButton
+        android:id="@+id/btnMoreDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtMovieGenre"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:tooltipText="@string/show_me_more_detail"
+        android:src="@drawable/more_detail_18dp"
+        android:text="@string/show_me_more_detail">
+
+    </ImageButton>
+    <TextView
+        android:id="@+id/lblMoreDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtMovieGenre"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@id/btnMoreDetail"
+        android:layout_marginTop="10dp"
+        android:gravity="left"
+        android:text="@string/show_me_more_detail"
+        android:textAppearance="?android:attr/subtitle"
+        android:textColor="@color/black_effective"
+        android:textSize="12sp" />
+    <GridLayout
+        android:id="@+id/grdDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnMoreDetail"
+        android:columnCount="3"
+        android:gravity="center"
+        android:horizontalSpacing="5dp"
+        android:numColumns="auto_fit"
+        android:orientation="vertical"
+        android:rowCount="5"
+        android:layout_marginTop="20dp"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="5dp">
+
+        <TextView
+            android:id="@+id/lblYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:text="@string/year"
+            android:textAppearance="?android:attr/subtitle"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:textAppearance="?android:attr/subtitle"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/lblMovieDirector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:layout_gravity="left|top"
+            android:text="@string/director"
+            android:textAppearance="?android:attr/subtitle"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/txtDirector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_column="2"
+            android:textAppearance="?android:attr/subtitle"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/txtCountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="2"
+            android:textAppearance="?android:attr/subtitle"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/lblCountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:layout_gravity="left|top"
+            android:text="@string/country"
+            android:textAppearance="?android:attr/subtitle"
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:id="@+id/lblRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="4"
+            android:layout_column="1"
+            android:layout_gravity="start"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:text="@string/rating"
+            android:textAppearance="?android:attr/subtitle"
+            android:textSize="16sp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_row="4"
+            android:layout_column="2"
+            android:max="5"
+            android:paddingTop="5dp"
+            />
+    </GridLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAdd"

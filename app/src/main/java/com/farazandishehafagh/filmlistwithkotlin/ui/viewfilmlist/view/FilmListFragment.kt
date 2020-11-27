@@ -5,10 +5,7 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -26,14 +23,8 @@ import kotlinx.android.synthetic.main.fragment_film_list.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-
-
 /**
- * A simple [Fragment] subclass.
- * Use the [FilmListFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * @author Paniz Alipour 99.09.05
  */
 class FilmListFragment : Fragment() {
 
@@ -50,6 +41,7 @@ class FilmListFragment : Fragment() {
                     y.title,
                     y.poster,
                     y.genres.get(0),
+                    y.id,
                     y.images!!.get(0)
                 )
         )
@@ -70,14 +62,25 @@ class FilmListFragment : Fragment() {
     }
 
     private fun handleIntent(intent: Intent?) {
-
         if (Intent.ACTION_SEARCH == intent?.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
             //use the query to search your data somehow
-            movieViewModel.searchMoviesByTitleService(query, page)
+            if (requireContext().isConnected())
+                movieViewModel.searchMoviesByTitleService(query, page)
+            else {
+
+                movieViewModel.getSelectedMovies(query).observe(viewLifecycleOwner, Observer {
+                    val moviList = mapList(it)
+                    movies.addAll(moviList)
+                    adapter.submitList(movies.toMutableList())
+                })
+            }
         }
+    }
 
-
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.options_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
 
@@ -104,11 +107,20 @@ class FilmListFragment : Fragment() {
                     movieViewModel.getMovie(page)
 
             } else {
-                movieViewModel.getAllMovie().observe(viewLifecycleOwner, Observer {
-                    val moviList = mapList(it)
-                    movies.addAll(moviList)
-                    adapter.submitList(movies.toMutableList())
-                })
+                Toast.makeText(
+                    context,
+                    "Network is disconnected! you can see offline data",
+                    Toast.LENGTH_LONG
+                ).show()
+                if (activity?.intent?.action != Intent.ACTION_SEARCH)
+                    movieViewModel.getAllMovie().observe(viewLifecycleOwner, Observer {
+                        val moviList = mapList(it)
+                        movies.addAll(moviList)
+                        adapter.submitList(movies.toMutableList())
+                    })
+//                else{
+//
+//                }
             }
         }
         fabNext.setOnClickListener {
