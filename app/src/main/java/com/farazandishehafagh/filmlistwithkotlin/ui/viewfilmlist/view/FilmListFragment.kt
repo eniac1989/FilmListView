@@ -41,8 +41,7 @@ class FilmListFragment : Fragment() {
                     y.title,
                     y.poster,
                     y.genres.get(0),
-                    y.id,
-                    y.images!!.get(0)
+                    y.id
                 )
         )
     }
@@ -57,7 +56,8 @@ class FilmListFragment : Fragment() {
     ): View? {
         setHasOptionsMenu(true)
         // Inflate the layout for this fragment
-        handleIntent(activity?.intent)
+        if (Intent.ACTION_SEARCH == activity?.intent?.action)
+            handleIntent(activity?.intent)
         return inflater.inflate(R.layout.fragment_film_list, container, false)
     }
 
@@ -65,14 +65,17 @@ class FilmListFragment : Fragment() {
         if (Intent.ACTION_SEARCH == intent?.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
             //use the query to search your data somehow
-            if (requireContext().isConnected())
+            if (requireContext().isConnected()) {
+
                 movieViewModel.searchMoviesByTitleService(query, page)
-            else {
+
+            } else {
 
                 movieViewModel.getSelectedMovies(query).observe(viewLifecycleOwner, Observer {
                     val moviList = mapList(it)
                     movies.addAll(moviList)
                     adapter.submitList(movies.toMutableList())
+
                 })
             }
         }
@@ -118,9 +121,6 @@ class FilmListFragment : Fragment() {
                         movies.addAll(moviList)
                         adapter.submitList(movies.toMutableList())
                     })
-//                else{
-//
-//                }
             }
         }
         fabNext.setOnClickListener {
@@ -139,5 +139,26 @@ class FilmListFragment : Fragment() {
     private fun setUp() {
         film_container.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         film_container.adapter = adapter
+    }
+
+    override fun onStop() {
+        super.onStop()
+        activity?.intent?.action = null
+        page = 1
+        movies.clear()
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        activity?.intent?.action = null
+        page = 1
+        movies.clear()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        activity?.intent?.action = null
+        page = 1
+        movies.clear()
     }
 }

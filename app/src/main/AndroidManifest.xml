@@ -9,9 +9,9 @@
     <application
         android:allowBackup="true"
         android:name="com.farazandishehafagh.filmlistwithkotlin.KotlinBaseApplication"
-        android:icon="@mipmap/ic_launcher_film"
+        android:icon="@drawable/film1"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_film"
+        android:roundIcon="@drawable/film1"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">

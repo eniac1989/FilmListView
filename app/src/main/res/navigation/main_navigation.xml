@@ -51,6 +51,7 @@
             android:name="id"
             app:argType="integer" />
         <argument
+            android:defaultValue=""
             android:name="image"
             app:argType="string" />
         <action
