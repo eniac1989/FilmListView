@@ -5,7 +5,7 @@ import com.farazandishehafagh.filmlistwithkotlin.data.api.MovieService
 import com.farazandishehafagh.filmlistwithkotlin.data.db.database.MovieDatabase
 import com.farazandishehafagh.filmlistwithkotlin.data.repository.MovieRepository
 import com.farazandishehafagh.filmlistwithkotlin.ui.filmDetail.viewmodel.MovieDetailViewModel
-import com.farazandishehafagh.filmlistwithkotlin.ui.mainview.MainActivity
+import com.farazandishehafagh.filmlistwithkotlin.ui.mainview.view.MainActivity
 import com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist.adapter.FilmListAdapter
 import com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist.view.FilmListFragment
 import com.farazandishehafagh.filmlistwithkotlin.ui.viewfilmlist.viewmodel.FilmListViewModel

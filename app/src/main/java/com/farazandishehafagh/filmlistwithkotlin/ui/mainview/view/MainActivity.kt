@@ -1,4 +1,4 @@
-package com.farazandishehafagh.filmlistwithkotlin.ui.mainview
+package com.farazandishehafagh.filmlistwithkotlin.ui.mainview.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

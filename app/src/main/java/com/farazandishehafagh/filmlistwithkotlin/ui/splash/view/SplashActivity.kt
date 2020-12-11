@@ -1,10 +1,10 @@
-package com.farazandishehafagh.filmlistwithkotlin.ui.splash
+package com.farazandishehafagh.filmlistwithkotlin.ui.splash.view
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.farazandishehafagh.filmlistwithkotlin.R
-import com.farazandishehafagh.filmlistwithkotlin.ui.mainview.MainActivity
+import com.farazandishehafagh.filmlistwithkotlin.ui.mainview.view.MainActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -35,7 +35,6 @@ class SplashActivity : AppCompatActivity() {
     }
 
     fun openMainActivity() {
-        //why MainActivity::class.java???
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }

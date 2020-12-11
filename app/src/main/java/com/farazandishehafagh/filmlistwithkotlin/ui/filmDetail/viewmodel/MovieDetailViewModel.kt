@@ -15,7 +15,6 @@ import kotlinx.coroutines.launch
  */
 class MovieDetailViewModel(private val movieRepository: MovieRepository) : ViewModel() {
 
-    val movieLiveData = MutableLiveData<List<MovieEntity>>()
     val movieDetailLiveData=MutableLiveData<MovieDetailModel>()
 
     fun insertMovie(movie: Datum)=viewModelScope.launch{
